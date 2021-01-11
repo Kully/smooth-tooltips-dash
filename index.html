@@ -36,6 +36,18 @@
             padding-right: 3px;
             transition: var(--transitionSpeed);
         }
+
+        /* Tooltip arrow pointing left */
+        .myHover::after {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 6px;
+            margin-left: -7px;
+            border-width: 7px;
+            border-style: solid;
+            border-color: transparent var(--color5) transparent transparent;
+        }
     </style>
 </head>
 
@@ -92,9 +104,11 @@ function get_hover_point_coordinates(data) {
 
 function move_hover_position(point_pixels, point_coords) {
     // margins and variables from document and plot
-    let hover_height = 15;  // see `.myHover` height
+    let hover_height = 15;       // see `.myHover` height
     let body_margin = 8;
     let pixels_from_point = 10;
+    let left_adjust = 4;
+    let top_adjust = 2;
     let plot_margin = {
         l: 30,
         r: 30,
@@ -102,8 +116,17 @@ function move_hover_position(point_pixels, point_coords) {
         b: 50,
     }
 
-    let offset_left = plot_margin["l"] + pixels_from_point + body_margin;
-    let offset_top = plot_margin["t"] - parseInt(hover_height / 2);
+    let offset_left = (
+          plot_margin["l"]
+        + pixels_from_point
+        + body_margin
+        + left_adjust
+    );
+    let offset_top = (
+          plot_margin["t"]
+        - parseInt(hover_height / 2)
+        + top_adjust
+    );
 
     myHover.style.left = parseInt(point_pixels["x"] + offset_left) + "px";
     myHover.style.top =  parseInt(point_pixels["y"] + offset_top) + "px";
