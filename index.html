@@ -13,6 +13,7 @@
             --color4: #ffa600;
             --color5: #EEEBD0;
             --color6: #333333;
+            --color5-low-opacity: #EEEBD0AA;
         }
 
         body {
@@ -25,12 +26,12 @@
             pointer-events: none;
             font-family: Arial;
             color: var(--color0);
-            background-color: var(--color5);
-            border-radius: 0px;
+            border-radius: 2px;
+            background-color: var(--color5-low-opacity);
             height: 15px;
             z-index: 50;
             opacity: 0;
-            font-size: 1rem;
+            font-size: 0.9rem;
             padding: 5px;
             padding-left: 3px;
             padding-right: 3px;
@@ -46,7 +47,7 @@
             margin-left: -7px;
             border-width: 7px;
             border-style: solid;
-            border-color: transparent var(--color5) transparent transparent;
+            border-color: transparent var(--color5-low-opacity) transparent transparent;
         }
     </style>
 </head>
@@ -131,7 +132,7 @@ function move_hover_position(point_pixels, point_coords) {
     myHover.style.left = parseInt(point_pixels["x"] + offset_left) + "px";
     myHover.style.top =  parseInt(point_pixels["y"] + offset_top) + "px";
     myHover.style.opacity = 1;
-    
+
     let hover_label = make_hover_label(
         point_coords["x"].toPrecision(2),
         point_coords["y"].toPrecision(4)
@@ -181,12 +182,13 @@ let myPlot = document.getElementById("myDiv"),
         showhover: false,
         plot_bgcolor: app_colors[0],
         paper_bgcolor: app_colors[0],
+        hovermode: "x",
         xaxis: {
             color: app_colors[1],
             gridcolor: app_colors[1],
             tickfont: {
                 color: app_colors[5],
-            }
+            },
         },
         yaxis: {
             color: app_colors[1],
@@ -195,7 +197,6 @@ let myPlot = document.getElementById("myDiv"),
                 color: app_colors[5],
             }
         },
-
     };
 Plotly.plot(
     "myDiv",
