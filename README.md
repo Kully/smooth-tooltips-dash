@@ -1,1 +1,1 @@
-# plotly-smooth
+# Buttery Smooth Tooltips in Dash
