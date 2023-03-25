@@ -1,0 +1,32 @@
+:root {
+    --tooltip-color: #FFEEBC;
+}
+
+body {
+    background-color: #fafafa;
+    font-family: Verdana;
+}
+
+.dcc-tooltip-bounding-box {
+    transition: 0.23s;
+    animation-timing-function: cubic;
+}
+
+.dcc-tooltip-bounding-box .hover::after {
+    border-color: transparent var(--tooltip-color) transparent transparent !important;
+}
+
+.my-tooltip {
+    color: #222;
+    font-size: 0.9rem;
+    background-color: var(--tooltip-color) !important;
+    border: 0px solid red !important;
+    height: 4rem !important;
+    width: 3rem !important;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08) !important;
+}
+
+.my-tooltip * {
+    padding: 0 !important;
+    margin: 0 !important;
+}
